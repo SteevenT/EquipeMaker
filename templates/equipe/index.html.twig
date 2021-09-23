@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Make yours Teams{% endblock %}
+
+{% block body %}
+
+<div class="container px-5">
+    <h1>Make yours Teams </h1> 
+    <div class="row">
+        <div class="col-8"> 
+
+            {{ form_start(formEquipe) }} {# <form ...> #}
+
+
+            {{ form_widget(formEquipe) }} {# <form ...> #}
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-plus">Enregistrer</i>
+                </button>
+
+            {{ form_end(formEquipe) }} {# </form> #}
+
+            <br>
+
+            {% for equipe in equipes %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <h4>{{ equipe.nom }}</h4>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in equipe.personnes %}
+                            <tr>
+                                <td>{{ p.Nom }}</td>
+                                <td>{{ p.Prenom }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        
+        </div>
+        <div class="col-4"> 
+            {{ form_start(formPersonne) }} 
+
+
+            {{ form_widget(formPersonne) }} 
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-plus">Enregistrer</i>
+                </button>
+
+            {{ form_end(formPersonne) }} 
+        </div>
+        
+    </div>    
+</div>
+{% endblock %}
